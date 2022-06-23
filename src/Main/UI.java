@@ -5,16 +5,25 @@ import javax.swing.*;
 
 public class UI {
 
-    public static void setupWindow() {
-        createWindow();
+    public UI() {
+        JFrame frame = setupWindow();
     }
 
-    private static void createWindow() {
+    public JFrame setupWindow() {
+        JFrame frame = createWindow();
+        frame.setLocationRelativeTo(null);
+        frame.pack();
+        frame.setVisible(true);
+        return frame;
+    }
+
+    private JFrame createWindow() {
         JFrame frame = new JFrame("Sorting Simulator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        return frame;
     }
 
-    private static void setText() {
+    private void setText() {
         // JLabel
     }
 

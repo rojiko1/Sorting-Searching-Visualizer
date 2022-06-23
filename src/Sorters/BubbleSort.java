@@ -2,6 +2,7 @@ package Sorters;
 
 import java.util.Arrays;
 
+// time complexity: O n^2
 // comments: sort() has significantly faster execution than recursiveSort(), though both finish in less than a millisecond
 
 public class BubbleSort {
