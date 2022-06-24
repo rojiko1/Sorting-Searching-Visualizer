@@ -1,6 +1,6 @@
 package Sorters;
 
-public class QuickSort extends Sort {
+public class InsertionSort extends Sort {
 
     public int[] sort(int[] array) {
         // sorting
