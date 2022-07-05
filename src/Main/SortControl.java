@@ -14,7 +14,7 @@ public class SortControl {
 
     public int[] executeOptimalSort(int[] array) {
         String optimal_sort = findOptimalSort(array.length);
-        int[] sorted_array = mergeSort.sort(array);
+        int[] sorted_array = selectionSort.sort(array);
         return sorted_array;
     }
 

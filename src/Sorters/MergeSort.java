@@ -2,7 +2,7 @@ package Sorters;
 
 import java.util.Arrays;
 
-// time complexity: O n * log(n)
+// time complexity: best: O(nlog(n)); average: O(nlog(n)); worst: O(nlog(n)) COME BACK TO THIS; PROBABLY INCORRECT
 // merge sort: efficient sorting algorithm; highly scalable
 
 public class MergeSort extends Sort {
