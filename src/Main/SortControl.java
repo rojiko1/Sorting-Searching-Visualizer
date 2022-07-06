@@ -1,6 +1,9 @@
 package Main;
 
 import Sorters.*;
+import UI.Element;
+
+import java.util.ArrayList;
 
 public class SortControl {
 
@@ -12,9 +15,9 @@ public class SortControl {
     private static RadixSort radixSort = new RadixSort();
     private static SelectionSort selectionSort = new SelectionSort();
 
-    public int[] executeOptimalSort(int[] array) {
-        String optimal_sort = findOptimalSort(array.length);
-        int[] sorted_array = selectionSort.sort(array);
+    public ArrayList<Element> executeOptimalSort(ArrayList<Element> array) {
+        String optimal_sort = findOptimalSort(array.size());
+        ArrayList<Element> sorted_array = mergeSort.sort(array);
         return sorted_array;
     }
 
