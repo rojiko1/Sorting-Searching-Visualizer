@@ -1,5 +1,8 @@
 package Sorters;
 
+import UI.Element;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 
 // time complexity: best: O(n^2); average: O(n^2); worst: O(n^2) COME BACK TO THIS; PROBABLY INCORRECT
@@ -8,10 +11,10 @@ import java.util.Arrays;
 
 public class BubbleSort extends Sort {
 
-    public int[] sort(int[] array) {
-        for (int i = array.length; i > 0; i--) {
+    public ArrayList<Element> sort(ArrayList<Element> array) {
+        for (int i = array.size(); i > 0; i--) {
             for (int j = 0; j < (i - 1); j++) {
-                if (array[j] > array[j + 1]) {
+                if (array.get(j).getValue() > array.get(j + 1).getValue()) {
                     array = swap(array, j, j + 1);
                 }
             }
@@ -19,25 +22,16 @@ public class BubbleSort extends Sort {
         return array;
     }
 
-    public int[] recursiveSort(int[] array, int currentDepth) { //practice writing recursive functions, not meant to be used
-        int[] mod_array;
-        if (currentDepth != array.length) {
-            mod_array = recursiveSort(array, currentDepth + 1);
-        } else {
-            mod_array = array;
+    public ArrayList<Element> recursiveSort(ArrayList<Element> array, int currentDepth) {
+        if (currentDepth != array.size()) {
+            array = recursiveSort(array, currentDepth + 1);
         }
-        for (int i = 0; i < (mod_array.length - 1); i++) {
-            if (mod_array[i] > mod_array[i + 1]) {
-                mod_array = swap(mod_array, i, i + 1);
+        for (int i = 0; i < (currentDepth - 1); i++) {
+            if (array.get(i).getValue() > array.get(i + 1).getValue()) {
+                array = swap(array, i, i + 1);
             }
         }
-        array[mod_array.length - 1] = mod_array[mod_array.length - 1];
-        if (currentDepth == 1) {
-            return array;
-        }
-        else {
-            return Arrays.copyOf(mod_array, mod_array.length - 1);
-        }
+        return array;
     }
 
 }
