@@ -21,8 +21,6 @@ public class Main {
         }
 
         ArrayList<Element> sorted_array = sortControl.executeOptimalSort(array);
-
-        System.out.println(sorted_array);
         System.out.println(searchControl.executeOptimalSearch(array, 7, false));
         System.out.println(searchControl.executeOptimalSearch(sorted_array, 7, true));
     }

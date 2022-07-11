@@ -11,17 +11,18 @@ import java.util.Arrays;
 public class MergeSort extends Sort {
 
     public ArrayList<Element> sort(ArrayList<Element> array) {
-        if (array.size() > 1) {
-            ArrayList<Element> left_half = new ArrayList<Element>(array.subList(0, array.size() / 2));
-            ArrayList<Element> right_half = new ArrayList<Element>(array.subList(array.size() / 2, array.size()));
+        ArrayList<Element> new_array = new ArrayList<>(array);
+        if (new_array.size() > 1) {
+            ArrayList<Element> left_half = new ArrayList<Element>(new_array.subList(0, array.size() / 2));
+            ArrayList<Element> right_half = new ArrayList<Element>(new_array.subList(array.size() / 2, array.size()));
 
             ArrayList<Element> sorted_left_half = sort(left_half);
             ArrayList<Element> sorted_right_half = sort(right_half);
 
-            array = merge(sorted_left_half, sorted_right_half);
+            new_array = merge(sorted_left_half, sorted_right_half);
+            new_array = updateIndices(new_array);
         }
-        array = updateIndices(array);
-        return array;
+        return new_array;
     }
 
     private ArrayList<Element> merge(ArrayList<Element> firstArray, ArrayList<Element> secondArray) {
@@ -47,6 +48,10 @@ public class MergeSort extends Sort {
             }
         }
         return merged_array;
+    }
+
+    public String getSortName() {
+        return "Merge Sort";
     }
 
 }

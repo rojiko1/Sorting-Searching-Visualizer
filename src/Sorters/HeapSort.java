@@ -11,4 +11,8 @@ public class HeapSort extends Sort {
         return array;
     }
 
+    public String getSortName() {
+        return "Heap Sort";
+    }
+
 }

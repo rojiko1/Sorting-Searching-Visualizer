@@ -14,6 +14,8 @@ public abstract class Sort {
 
     public abstract ArrayList<Element> sort(ArrayList<Element> array);
 
+    public abstract String getSortName();
+
     protected ArrayList<Element> swap(ArrayList<Element> array, int firstIndex, int secondIndex) {
         // switch positions
         Element first = array.get(firstIndex);

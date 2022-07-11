@@ -18,4 +18,18 @@ public class SequentialSearch extends Search {
         return -1;
     }
 
+    /* public int threaded_search(ArrayList<Element> array, int searchItem, int numThreads) throws Exception {
+        if (numThreads < 2) {
+            throw new Exception("Minimum number of threads is 2 for use of threaded_search.");
+        }
+        else if (array.size() < (numThreads * 4)) {
+            throw new Exception("Minimum length of array for use of threaded_search is 4 times the number of threads");
+        }
+        else {
+            for (int i = 0; i < numThreads; i++) {
+                new Thread.start();
+            }
+        }
+    } */
+
 }

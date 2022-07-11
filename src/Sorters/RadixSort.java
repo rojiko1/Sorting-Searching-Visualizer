@@ -11,4 +11,8 @@ public class RadixSort extends Sort {
         return array;
     }
 
+    public String getSortName() {
+        return "Radix Sort";
+    }
+
 }

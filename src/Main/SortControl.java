@@ -15,9 +15,17 @@ public class SortControl {
     private static RadixSort radixSort = new RadixSort();
     private static SelectionSort selectionSort = new SelectionSort();
 
+    private static Sort[] sorts = {bubbleSort, heapSort, insertionSort, mergeSort, quickSort, radixSort, selectionSort};
+
     public ArrayList<Element> executeOptimalSort(ArrayList<Element> array) {
         String optimal_sort = findOptimalSort(array.size());
-        ArrayList<Element> sorted_array = mergeSort.sort(array);
+        ArrayList<Element> sorted_array;
+        for (int i = 0; i < sorts.length; i++) {
+            sorted_array = sorts[i].sort(array);
+            System.out.println(sorts[i].getSortName() + ": " + sorted_array);
+            System.out.println();
+        }
+        sorted_array = mergeSort.sort(array);
         return sorted_array;
     }
 

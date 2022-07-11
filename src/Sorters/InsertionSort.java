@@ -10,12 +10,13 @@ import java.util.ArrayList;
 public class InsertionSort extends Sort {
 
     public ArrayList<Element> sort(ArrayList<Element> array) {
-        for (int i = 1; i < array.size(); i++) {
+        ArrayList<Element> new_array = new ArrayList<Element>(array);
+        for (int i = 1; i < new_array.size(); i++) {
             // insert into correct position
             int itemIndex = i;
             while (itemIndex > 0) {
-                if (array.get(itemIndex).getValue() < array.get(itemIndex - 1).getValue()) {
-                    array = swap(array, itemIndex - 1, itemIndex);
+                if (new_array.get(itemIndex).getValue() < new_array.get(itemIndex - 1).getValue()) {
+                    new_array = swap(new_array, itemIndex - 1, itemIndex);
                     itemIndex--;
                 }
                 else {
@@ -23,7 +24,11 @@ public class InsertionSort extends Sort {
                 }
             }
         }
-        return array;
+        return new_array;
+    }
+
+    public String getSortName() {
+        return "Insertion Sort";
     }
 
 }

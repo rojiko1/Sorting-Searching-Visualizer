@@ -11,4 +11,8 @@ public class QuickSort extends Sort {
         return array;
     }
 
+    public String getSortName() {
+        return "Quick Sort";
+    }
+
 }

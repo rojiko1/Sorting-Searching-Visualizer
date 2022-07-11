@@ -12,26 +12,32 @@ import java.util.Arrays;
 public class BubbleSort extends Sort {
 
     public ArrayList<Element> sort(ArrayList<Element> array) {
-        for (int i = array.size(); i > 0; i--) {
+        ArrayList<Element> new_array = new ArrayList<Element>(array);
+        for (int i = new_array.size(); i > 0; i--) {
             for (int j = 0; j < (i - 1); j++) {
-                if (array.get(j).getValue() > array.get(j + 1).getValue()) {
-                    array = swap(array, j, j + 1);
+                if (new_array.get(j).getValue() > new_array.get(j + 1).getValue()) {
+                    new_array = swap(new_array, j, j + 1);
                 }
             }
         }
-        return array;
+        return new_array;
     }
 
     public ArrayList<Element> recursiveSort(ArrayList<Element> array, int currentDepth) {
-        if (currentDepth != array.size()) {
-            array = recursiveSort(array, currentDepth + 1);
+        ArrayList<Element> new_array = new ArrayList<Element>(array);
+        if (currentDepth != new_array.size()) {
+            new_array = recursiveSort(array, currentDepth + 1);
         }
         for (int i = 0; i < (currentDepth - 1); i++) {
-            if (array.get(i).getValue() > array.get(i + 1).getValue()) {
-                array = swap(array, i, i + 1);
+            if (new_array.get(i).getValue() > new_array.get(i + 1).getValue()) {
+                new_array = swap(new_array, i, i + 1);
             }
         }
-        return array;
+        return new_array;
+    }
+
+    public String getSortName() {
+        return "Bubble Sort";
     }
 
 }
