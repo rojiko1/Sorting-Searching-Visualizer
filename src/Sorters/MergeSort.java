@@ -20,7 +20,7 @@ public class MergeSort extends Sort {
             ArrayList<Element> sorted_right_half = sort(right_half);
 
             new_array = merge(sorted_left_half, sorted_right_half);
-            new_array = updateIndices(new_array);
+            updateIndices(new_array);
         }
         return new_array;
     }

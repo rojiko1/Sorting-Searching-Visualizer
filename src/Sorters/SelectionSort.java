@@ -21,8 +21,9 @@ public class SelectionSort extends Sort {
                     minIndex = j;
                 }
             }
-            new_array = swap(new_array, i, minIndex);
+            swapper.swap(new_array, i, minIndex);
         }
+        updateIndices(new_array);
         return new_array;
     }
 

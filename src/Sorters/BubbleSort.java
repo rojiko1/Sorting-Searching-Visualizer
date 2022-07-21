@@ -3,11 +3,9 @@ package Sorters;
 import UI.Element;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 // time complexity: best: O(n^2); average: O(n^2); worst: O(n^2) COME BACK TO THIS; PROBABLY INCORRECT
 // bubble sort: inefficient sorting algorithm; highly unscalable
-// sort() has significantly faster execution than recursiveSort(), though both finish in less than a millisecond
 
 public class BubbleSort extends Sort {
 
@@ -16,10 +14,11 @@ public class BubbleSort extends Sort {
         for (int i = new_array.size(); i > 0; i--) {
             for (int j = 0; j < (i - 1); j++) {
                 if (new_array.get(j).getValue() > new_array.get(j + 1).getValue()) {
-                    new_array = swap(new_array, j, j + 1);
+                    swapper.swap(new_array, j, j + 1);
                 }
             }
         }
+        updateIndices(new_array);
         return new_array;
     }
 
@@ -30,9 +29,10 @@ public class BubbleSort extends Sort {
         }
         for (int i = 0; i < (currentDepth - 1); i++) {
             if (new_array.get(i).getValue() > new_array.get(i + 1).getValue()) {
-                new_array = swap(new_array, i, i + 1);
+                swapper.swap(new_array, i, i + 1);
             }
         }
+        updateIndices(new_array);
         return new_array;
     }
 

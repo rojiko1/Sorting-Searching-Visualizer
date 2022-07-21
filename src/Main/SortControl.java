@@ -14,8 +14,9 @@ public class SortControl {
     private static QuickSort quickSort = new QuickSort();
     private static RadixSort radixSort = new RadixSort();
     private static SelectionSort selectionSort = new SelectionSort();
+    private static ShellSort shellSort = new ShellSort();
 
-    private static Sort[] sorts = {bubbleSort, heapSort, insertionSort, mergeSort, quickSort, radixSort, selectionSort};
+    private static Sort[] sorts = {bubbleSort, heapSort, insertionSort, mergeSort, quickSort, radixSort, selectionSort, shellSort};
 
     public ArrayList<Element> executeOptimalSort(ArrayList<Element> array) {
         String optimal_sort = findOptimalSort(array.size());

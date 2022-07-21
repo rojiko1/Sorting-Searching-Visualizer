@@ -1,14 +1,12 @@
 package Main;
 
-import UI.Element;
-
+import UI.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Main {
 
     public static void main(String[] args) {
-        // UI ui = new UI();
+        UI ui = new UI();
         SortControl sortControl = new SortControl();
         SearchControl searchControl = new SearchControl();
 
