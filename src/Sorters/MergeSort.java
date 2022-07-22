@@ -3,7 +3,6 @@ package Sorters;
 import UI.Element;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 // time complexity: best: O(nlog(n)); average: O(nlog(n)); worst: O(nlog(n)) COME BACK TO THIS; PROBABLY INCORRECT
 // merge sort: efficient sorting algorithm; highly scalable
