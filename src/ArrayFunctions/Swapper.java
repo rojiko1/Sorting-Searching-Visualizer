@@ -1,4 +1,4 @@
-package Main;
+package ArrayFunctions;
 
 import UI.Element;
 

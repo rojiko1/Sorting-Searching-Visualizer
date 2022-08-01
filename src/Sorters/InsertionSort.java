@@ -3,28 +3,28 @@ package Sorters;
 // time complexity: best: O(n); average: O(n^2); worst: O(n^2)
 // sort name: inefficient sorting algorithm; highly unscalable
 
+import ArrayFunctions.Pointer;
 import UI.Element;
 import java.util.ArrayList;
 
 public class InsertionSort extends Sort {
 
-    public ArrayList<Element> sort(ArrayList<Element> array) {
-        ArrayList<Element> new_array = new ArrayList<Element>(array);
-        for (int i = 1; i < new_array.size(); i++) {
+    public ArrayList<Element> sort(ArrayList<Element> array, Pointer pointer) throws InterruptedException {
+        for (int i = 1; i < array.size(); i++) {
             // insert into correct position
             int itemIndex = i;
             while (itemIndex > 0) {
-                if (new_array.get(itemIndex).getValue() < new_array.get(itemIndex - 1).getValue()) {
-                    swapper.swap(new_array, itemIndex - 1, itemIndex);
+                if (array.get(itemIndex).getValue() < array.get(itemIndex - 1).getValue()) {
+                    swap(array, itemIndex - 1, itemIndex);
                     itemIndex--;
+                    Thread.sleep(speed);
                 }
                 else {
                     break;
                 }
             }
         }
-        updateIndices(new_array);
-        return new_array;
+        return array;
     }
 
     public String getSortName() {

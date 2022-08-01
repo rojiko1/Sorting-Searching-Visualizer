@@ -1,5 +1,6 @@
 package Sorters;
 
+import ArrayFunctions.Pointer;
 import UI.Element;
 
 import java.util.ArrayList;
@@ -9,18 +10,18 @@ import java.util.ArrayList;
 
 public class ShellSort extends Sort {
 
-    public ArrayList<Element> sort(ArrayList<Element> array) {
-        ArrayList<Element> new_array = new ArrayList<Element>(array);
-        int blockSize = ((new_array.size() / 9) * 3) + 1;
+    public ArrayList<Element> sort(ArrayList<Element> array, Pointer pointer) throws InterruptedException {
+        int blockSize = ((array.size() / 9) * 3) + 1;
         for (int j = blockSize; j > 0; j -= 3) {
             // performing insertion sort w/ greater shifts of elements (shift size decreases on 3x + 1)
-            for (int i = j; i < new_array.size(); i++) {
+            for (int i = j; i < array.size(); i++) {
                 // insert into correct position
                 int itemIndex = i;
                 while (itemIndex > j - 1) {
-                    if (new_array.get(itemIndex).getValue() < new_array.get(itemIndex - j).getValue()) {
-                        swapper.swap(new_array, itemIndex - j, itemIndex);
+                    if (array.get(itemIndex).getValue() < array.get(itemIndex - j).getValue()) {
+                        swap(array, itemIndex - j, itemIndex);
                         itemIndex -= j;
+                        Thread.sleep(speed);
                     }
                     else {
                         break;
@@ -28,8 +29,7 @@ public class ShellSort extends Sort {
                 }
             }
         }
-        updateIndices(new_array);
-        return new_array;
+        return array;
     }
 
     public String getSortName() {

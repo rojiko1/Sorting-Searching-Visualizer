@@ -1,5 +1,6 @@
 package Sorters;
 
+import ArrayFunctions.Pointer;
 import UI.Element;
 
 import java.util.ArrayList;
@@ -9,31 +10,30 @@ import java.util.ArrayList;
 
 public class BubbleSort extends Sort {
 
-    public ArrayList<Element> sort(ArrayList<Element> array) {
-        ArrayList<Element> new_array = new ArrayList<Element>(array);
-        for (int i = new_array.size(); i > 0; i--) {
+    public ArrayList<Element> sort(ArrayList<Element> array, Pointer pointer) throws InterruptedException {
+        for (int i = array.size(); i > 0; i--) {
+            pointer.setCurrentIndex(0);
             for (int j = 0; j < (i - 1); j++) {
-                if (new_array.get(j).getValue() > new_array.get(j + 1).getValue()) {
-                    swapper.swap(new_array, j, j + 1);
+                pointer.incrementCurrentIndex();
+                if (array.get(j).getValue() > array.get(j + 1).getValue()) {
+                    swap(array, j, j + 1);
+                    Thread.sleep(speed);
                 }
             }
         }
-        updateIndices(new_array);
-        return new_array;
+        return array;
     }
 
     public ArrayList<Element> recursiveSort(ArrayList<Element> array, int currentDepth) {
-        ArrayList<Element> new_array = new ArrayList<Element>(array);
-        if (currentDepth != new_array.size()) {
-            new_array = recursiveSort(array, currentDepth + 1);
+        if (currentDepth != array.size()) {
+            array = recursiveSort(array, currentDepth + 1);
         }
         for (int i = 0; i < (currentDepth - 1); i++) {
-            if (new_array.get(i).getValue() > new_array.get(i + 1).getValue()) {
-                swapper.swap(new_array, i, i + 1);
+            if (array.get(i).getValue() > array.get(i + 1).getValue()) {
+                swap(array, i, i + 1);
             }
         }
-        updateIndices(new_array);
-        return new_array;
+        return array;
     }
 
     public String getSortName() {

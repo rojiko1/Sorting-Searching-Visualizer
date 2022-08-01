@@ -4,12 +4,10 @@ public class Element {
 
     private int value;
     private int index;
-    private Rectangle rectangle;
 
     public Element(int value, int index) {
         this.value = value;
         this.index = index;
-        this.rectangle = new Rectangle(this);
     }
 
     public int getValue() {
