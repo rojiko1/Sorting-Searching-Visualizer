@@ -4,7 +4,7 @@ package Sorters;
 // sort name: inefficient sorting algorithm; highly unscalable
 
 import ArrayFunctions.Pointer;
-import UI.Element;
+import ArrayFunctions.Element;
 
 import java.util.ArrayList;
 
@@ -16,14 +16,18 @@ public class SelectionSort extends Sort {
             int minVal = array.get(i).getValue();
             int minIndex = i;
             for (int j = i + 1; j < array.size(); j++) {
+                pointer.setCurrentIndex(j);
+                Thread.sleep(speed);
                 if (array.get(j).getValue() < minVal) {
                     minVal = array.get(j).getValue();
                     minIndex = j;
-                    Thread.sleep(speed);
                 }
             }
-            swap(array, i, minIndex);
+            pointer.setCurrentIndex(minIndex);
             Thread.sleep(speed);
+            pointer.setCurrentIndex(i);
+            Thread.sleep(speed);
+            swap(array, i, minIndex);
         }
         return array;
     }

@@ -3,6 +3,8 @@ package UI;
 import Main.Settings;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -10,7 +12,7 @@ public class Display {
 
     private final Dimension dimension = new Dimension(1200, 600);
     private JFrame frame;
-    private Canvas canvas;
+    private JPanel panel;
 
     public Display() {
         initializeWindow();
@@ -24,11 +26,23 @@ public class Display {
         frame.setLocationRelativeTo(null);
         frame.setLocation(0, 0);
 
-        canvas = new Canvas();
-        canvas.setPreferredSize(dimension);
-        canvas.setMinimumSize(dimension);
-        canvas.setMaximumSize(dimension);
-        frame.add(canvas);
+        panel = new JPanel();
+        panel.setPreferredSize(dimension);
+        panel.setMinimumSize(dimension);
+        panel.setMaximumSize(dimension);
+
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+
+        panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("screen clicked");
+                System.out.println(e.getX());
+                System.out.println(e.getY());
+            }
+        });
+
+        frame.add(panel);
 
         frame.pack();
         frame.setVisible(true);
@@ -36,6 +50,6 @@ public class Display {
 
     public boolean running() {return frame.isVisible();}
 
-    public Canvas getCanvas() {return canvas;}
+    public JPanel getPanel() {return panel;}
 
 }

@@ -4,7 +4,7 @@ package Sorters;
 // sort name: inefficient sorting algorithm; highly unscalable
 
 import ArrayFunctions.Pointer;
-import UI.Element;
+import ArrayFunctions.Element;
 import java.util.ArrayList;
 
 public class InsertionSort extends Sort {

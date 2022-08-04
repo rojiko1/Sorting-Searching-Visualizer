@@ -4,7 +4,7 @@ package Searchers;
 // sort name: commentary on efficiency
 
 import ArrayFunctions.Pointer;
-import UI.Element;
+import ArrayFunctions.Element;
 
 import java.util.ArrayList;
 
@@ -12,7 +12,7 @@ public abstract class Search {
 
     protected static final int fastMilliseconds = 400;
     protected static final int slowMilliseconds = 1000;
-    protected int speed = fastMilliseconds;
+    protected int speed = slowMilliseconds;
 
     public abstract int search(ArrayList<Element> array, Pointer pointer, int searchItem) throws InterruptedException;
 

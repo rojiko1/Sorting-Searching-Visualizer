@@ -4,7 +4,7 @@ package Searchers;
 // sequential/linear search: efficient for unstructured/unsorted data; inefficient for structured/sorted data
 
 import ArrayFunctions.Pointer;
-import UI.Element;
+import ArrayFunctions.Element;
 
 import java.util.ArrayList;
 

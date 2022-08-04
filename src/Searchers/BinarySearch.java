@@ -1,7 +1,7 @@
 package Searchers;
 
 import ArrayFunctions.Pointer;
-import UI.Element;
+import ArrayFunctions.Element;
 import java.util.ArrayList;
 
 // time complexity: best: O(1); average: O(lg(n)); worst: O(lg(n))

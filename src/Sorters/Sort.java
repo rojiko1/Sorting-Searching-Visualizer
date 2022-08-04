@@ -5,7 +5,7 @@ package Sorters;
 
 import ArrayFunctions.Pointer;
 import ArrayFunctions.Swapper;
-import UI.Element;
+import ArrayFunctions.Element;
 import java.util.ArrayList;
 
 public abstract class Sort {

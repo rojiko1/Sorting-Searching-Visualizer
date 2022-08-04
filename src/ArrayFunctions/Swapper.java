@@ -1,7 +1,5 @@
 package ArrayFunctions;
 
-import UI.Element;
-
 import java.util.ArrayList;
 
 public class Swapper<Item> {

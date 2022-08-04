@@ -5,21 +5,29 @@ import Sorters.Sort;
 
 public class Settings {
 
-    private static String speed;
-    private static String mode;
+    private static boolean slowSpeed;
+    private static Boolean sortMode;
     private static Sort sort;
     private static Search search;
 
-    public Settings(String speed, String mode, Sort sort, Search search) {
-        setSpeed(speed);
-        setMode(mode);
+    public Settings(boolean slowSpeed, Boolean sortMode, Sort sort, Search search) {
+        setSpeed(slowSpeed);
+        setMode(sortMode);
         setSort(sort);
         setSearch(search);
     }
 
-    public void setSpeed(String choice) {speed = choice;}
+    public boolean isSlowSpeed() {return slowSpeed;}
 
-    public void setMode(String choice) {mode = choice;}
+    public boolean isSortMode() {return sortMode;}
+
+    public Sort getSort() {return sort;}
+
+    public Search getSearch() {return search;
+    }
+    public void setSpeed(boolean choice) {slowSpeed = choice;}
+
+    public void setMode(boolean choice) {sortMode = choice;}
 
     public void setSort(Sort choice) {sort = choice;}
 

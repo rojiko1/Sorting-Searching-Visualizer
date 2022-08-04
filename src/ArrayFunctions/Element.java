@@ -1,4 +1,4 @@
-package UI;
+package ArrayFunctions;
 
 public class Element {
 
