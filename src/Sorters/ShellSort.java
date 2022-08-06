@@ -2,6 +2,7 @@ package Sorters;
 
 import ArrayFunctions.Pointer;
 import ArrayFunctions.Element;
+import Main.Settings;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ public class ShellSort extends Sort {
                     if (array.get(itemIndex).getValue() < array.get(itemIndex - j).getValue()) {
                         swap(array, itemIndex - j, itemIndex);
                         itemIndex -= j;
-                        Thread.sleep(speed);
+                        Thread.sleep(Settings.getSortTime());
                     }
                     else {
                         break;
@@ -33,7 +34,7 @@ public class ShellSort extends Sort {
     }
 
     public String getSortName() {
-        return "Shell Sort";
+        return "Shell";
     }
 
 }

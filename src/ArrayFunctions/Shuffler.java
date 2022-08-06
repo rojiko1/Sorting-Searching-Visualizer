@@ -1,7 +1,5 @@
 package ArrayFunctions;
 
-import ArrayFunctions.Swapper;
-
 import java.util.ArrayList;
 import java.util.Random;
 

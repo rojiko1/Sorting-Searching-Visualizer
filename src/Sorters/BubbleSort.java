@@ -2,6 +2,7 @@ package Sorters;
 
 import ArrayFunctions.Pointer;
 import ArrayFunctions.Element;
+import Main.Settings;
 
 import java.util.ArrayList;
 
@@ -17,7 +18,7 @@ public class BubbleSort extends Sort {
                 pointer.incrementCurrentIndex();
                 if (array.get(j).getValue() > array.get(j + 1).getValue()) {
                     swap(array, j, j + 1);
-                    Thread.sleep(speed);
+                    Thread.sleep(Settings.getSortTime());
                 }
             }
         }
@@ -37,7 +38,7 @@ public class BubbleSort extends Sort {
     }
 
     public String getSortName() {
-        return "Bubble Sort";
+        return "Bubble";
     }
 
 }

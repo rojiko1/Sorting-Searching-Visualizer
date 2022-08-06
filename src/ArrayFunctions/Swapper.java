@@ -10,4 +10,11 @@ public class Swapper<Item> {
         array.set(secondIndex, first);
     }
 
+    public Item[] swap(Item[] array, int firstIndex, int secondIndex) {
+        Item first = array[firstIndex];
+        array[firstIndex] = array[secondIndex];
+        array[secondIndex] = first;
+        return array;
+    }
+
 }

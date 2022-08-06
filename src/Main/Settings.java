@@ -1,36 +1,40 @@
 package Main;
 
+import ArrayFunctions.Control;
 import Searchers.Search;
 import Sorters.Sort;
 
 public class Settings {
 
-    private static boolean slowSpeed;
-    private static Boolean sortMode;
-    private static Sort sort;
-    private static Search search;
+    private static boolean slowSpeed = true;
+    private static boolean sortMode = true;
+    private static Sort sort = Control.getSelectionSort();
+    private static Search search = Control.getSequentialSearch();
 
-    public Settings(boolean slowSpeed, Boolean sortMode, Sort sort, Search search) {
-        setSpeed(slowSpeed);
-        setMode(sortMode);
-        setSort(sort);
-        setSearch(search);
+    public static boolean isSlowSpeed() {return slowSpeed;}
+
+    public static boolean isSortMode() {return sortMode;}
+
+    public static Sort getSort() {return sort;}
+
+    public static Search getSearch() {return search;}
+
+    public static int getSortTime() {
+        if (slowSpeed) {return 300;}
+        else {return 100;}
     }
 
-    public boolean isSlowSpeed() {return slowSpeed;}
-
-    public boolean isSortMode() {return sortMode;}
-
-    public Sort getSort() {return sort;}
-
-    public Search getSearch() {return search;
+    public static int getSearchTime() {
+        if (slowSpeed) {return 700;}
+        else {return 300;}
     }
-    public void setSpeed(boolean choice) {slowSpeed = choice;}
 
-    public void setMode(boolean choice) {sortMode = choice;}
+    public static void setSpeed(boolean choice) {slowSpeed = choice;}
 
-    public void setSort(Sort choice) {sort = choice;}
+    public static void setMode(boolean choice) {sortMode = choice;}
 
-    public void setSearch(Search choice) {search = choice;}
+    public static void setSort(Sort choice) {sort = choice;}
+
+    public static void setSearch(Search choice) {search = choice;}
 
 }

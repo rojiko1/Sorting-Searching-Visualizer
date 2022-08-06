@@ -13,7 +13,7 @@ public class RadixSort extends Sort {
     }
 
     public String getSortName() {
-        return "Radix Sort";
+        return "Radix";
     }
 
 }

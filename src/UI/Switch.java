@@ -6,20 +6,34 @@ import java.awt.event.MouseEvent;
 
 public class Switch extends Component {
 
-    private Rectangle bounds;
-    private boolean enabled;
-    private String option1;
-    private String option2;
+    private final Rectangle bounds;
+    private final String option1;
+    private final String option2;
     private boolean option1Selected;
 
-    public Switch(int x, int y, String option1, String option2) {
+    public Switch(int x, int y, String option1, String option2, SwitchAction leftAction, SwitchAction rightAction) {
         bounds = new Rectangle(x + 30, y - 3, 60, 36);
         this.setBounds(bounds);
 
-        this.enabled = true;
         this.option1 = option1;
         this.option2 = option2;
         this.option1Selected = true;
+
+        this.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (isEnabled()) {
+                    if (e.getX() < (getBounds().width / 2)) {
+                        setOption1Selected(true);
+                        leftAction.act();
+                    }
+                    else {
+                        setOption1Selected(false);
+                        rightAction.act();
+                    }
+                }
+            }
+        });
     }
 
     public void setOption1Selected(boolean option1Selected) {

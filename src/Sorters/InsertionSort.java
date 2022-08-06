@@ -5,6 +5,8 @@ package Sorters;
 
 import ArrayFunctions.Pointer;
 import ArrayFunctions.Element;
+import Main.Settings;
+
 import java.util.ArrayList;
 
 public class InsertionSort extends Sort {
@@ -17,7 +19,7 @@ public class InsertionSort extends Sort {
                 if (array.get(itemIndex).getValue() < array.get(itemIndex - 1).getValue()) {
                     swap(array, itemIndex - 1, itemIndex);
                     itemIndex--;
-                    Thread.sleep(speed);
+                    Thread.sleep(Settings.getSortTime());
                 }
                 else {
                     break;
@@ -28,7 +30,7 @@ public class InsertionSort extends Sort {
     }
 
     public String getSortName() {
-        return "Insertion Sort";
+        return "Insertion";
     }
 
 }

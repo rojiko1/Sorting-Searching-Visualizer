@@ -13,7 +13,7 @@ public class HeapSort extends Sort {
     }
 
     public String getSortName() {
-        return "Heap Sort";
+        return "Heap";
     }
 
 }

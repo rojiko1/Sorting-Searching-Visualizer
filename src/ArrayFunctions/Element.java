@@ -2,7 +2,7 @@ package ArrayFunctions;
 
 public class Element {
 
-    private int value;
+    private final int value;
     private int index;
 
     public Element(int value, int index) {

@@ -13,7 +13,7 @@ public class QuickSort extends Sort {
     }
 
     public String getSortName() {
-        return "Quick Sort";
+        return "Quick";
     }
 
 }

@@ -20,7 +20,7 @@ public class Pointer {
 
     public void render(Graphics g) {
         g.setColor(Color.red);
-        g.fillRect(15 + (26 * getCurrentIndex()), 60, 4, 500);
+        g.fillRect(14 + (26 * getCurrentIndex()), 60, 4, 500);
     }
 
 }

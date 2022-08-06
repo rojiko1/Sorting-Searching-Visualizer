@@ -5,6 +5,7 @@ package Sorters;
 
 import ArrayFunctions.Pointer;
 import ArrayFunctions.Element;
+import Main.Settings;
 
 import java.util.ArrayList;
 
@@ -17,23 +18,23 @@ public class SelectionSort extends Sort {
             int minIndex = i;
             for (int j = i + 1; j < array.size(); j++) {
                 pointer.setCurrentIndex(j);
-                Thread.sleep(speed);
+                Thread.sleep(Settings.getSortTime());
                 if (array.get(j).getValue() < minVal) {
                     minVal = array.get(j).getValue();
                     minIndex = j;
                 }
             }
             pointer.setCurrentIndex(minIndex);
-            Thread.sleep(speed);
+            Thread.sleep(Settings.getSortTime());
             pointer.setCurrentIndex(i);
-            Thread.sleep(speed);
+            Thread.sleep(Settings.getSortTime());
             swap(array, i, minIndex);
         }
         return array;
     }
 
     public String getSortName() {
-        return "Selection Sort";
+        return "Selection";
     }
 
 }

@@ -4,13 +4,18 @@ import java.awt.*;
 
 public class RadioButton extends Component {
 
-    private Rectangle bounds;
-    private String text;
+    private final Rectangle bounds;
+    private final int initX;
+    private final int initY;
+    private final String text;
     private boolean selected = false;
 
-    public RadioButton(String text, int x, int y) {
+    public RadioButton(String text, int initX, int initY, int x) {
         this.text = text;
-        bounds = new Rectangle(x, y, 90, 30);
+        this.initX = initX;
+        this.initY = initY;
+
+        bounds = new Rectangle(x, 0, 90, 30);
         this.setBounds(bounds);
     }
 
@@ -19,10 +24,10 @@ public class RadioButton extends Component {
     public void render(Graphics g) {
         if (selected) {
             g.setColor(Color.darkGray);
-            g.fillOval(bounds.x, bounds.y + 10, 10, 10);
+            g.fillOval(bounds.x + initX, bounds.y + initY + 10, 10, 10);
         }
-        else {g.drawOval(bounds.x, bounds.y + 10, 10, 10);}
-        g.drawString(text, bounds.x + 15, bounds.y + 20);
+        else {g.drawOval(bounds.x + initX, bounds.y + initY + 10, 10, 10);}
+        g.drawString(text, bounds.x + initX + 15, bounds.y + initY + 20);
     }
 
 }
