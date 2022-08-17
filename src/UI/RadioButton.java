@@ -22,12 +22,15 @@ public class RadioButton extends Component {
     public void setSelected(boolean selected) {this.selected = selected;}
 
     public void render(Graphics g) {
-        if (selected) {
-            g.setColor(Color.darkGray);
-            g.fillOval(bounds.x + initX, bounds.y + initY + 10, 10, 10);
+        if (isEnabled()) {
+            if (selected) {
+                g.setColor(Color.darkGray);
+                g.fillOval(bounds.x + initX, bounds.y + initY + 10, 10, 10);
+            } else {
+                g.drawOval(bounds.x + initX, bounds.y + initY + 10, 10, 10);
+            }
+            g.drawString(text, bounds.x + initX + 15, bounds.y + initY + 20);
         }
-        else {g.drawOval(bounds.x + initX, bounds.y + initY + 10, 10, 10);}
-        g.drawString(text, bounds.x + initX + 15, bounds.y + initY + 20);
     }
 
 }

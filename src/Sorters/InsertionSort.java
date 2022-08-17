@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class InsertionSort extends Sort {
 
-    public ArrayList<Element> sort(ArrayList<Element> array, Pointer pointer) throws InterruptedException {
+    public ArrayList<Element> sort(ArrayList<Element> array, Pointer pointer1, Pointer pointer2) throws InterruptedException {
         for (int i = 1; i < array.size(); i++) {
             // insert into correct position
             int itemIndex = i;

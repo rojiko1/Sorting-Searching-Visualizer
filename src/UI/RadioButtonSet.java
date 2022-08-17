@@ -33,8 +33,10 @@ public class RadioButtonSet extends JPanel {
             set[i].addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    setSelected(finalI);
-                    action.act();
+                    if (set[finalI].isEnabled()) {
+                        setSelected(finalI);
+                        action.act();
+                    }
                 }
             });
         }
@@ -46,6 +48,13 @@ public class RadioButtonSet extends JPanel {
         set[indexSelected].setSelected(false);
         set[index].setSelected(true);
         indexSelected = index;
+    }
+
+    @Override
+    public void setEnabled(boolean choice) {
+        for (RadioButton radioButton : set) {
+            radioButton.setEnabled(choice);
+        }
     }
 
     public void render(Graphics g) {

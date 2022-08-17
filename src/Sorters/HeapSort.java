@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class HeapSort extends Sort {
 
-    public ArrayList<Element> sort(ArrayList<Element> array, Pointer pointer) {
+    public ArrayList<Element> sort(ArrayList<Element> array, Pointer pointer1, Pointer pointer2) {
         // sorting
         return array;
     }

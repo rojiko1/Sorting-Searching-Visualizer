@@ -5,8 +5,11 @@ import Searchers.BinarySearch;
 import Searchers.Search;
 import Searchers.SequentialSearch;
 import Sorters.*;
+import UI.Display;
+import UI.UserInterface;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Control {
 
@@ -25,10 +28,13 @@ public class Control {
     private static final SequentialSearch sequentialSearch = new SequentialSearch();
     private static final Search[] searches = {binarySearch, sequentialSearch};
     private static String[] searchNames = null;
-    private final Pointer pointer;
 
-    public Control(Pointer pointer) {
-        this.pointer = pointer;
+    private final Random random = new Random();
+    private ArrayList<Element> array;
+    private Display display;
+    private UserInterface userInterface;
+
+    public Control() throws InterruptedException {
         sortNames = new String[sorts.length];
         for (int i = 0; i < sorts.length; i++) {
             sortNames[i] = sorts[i].getSortName();
@@ -37,19 +43,38 @@ public class Control {
         for (int i = 0; i < searches.length; i++) {
             searchNames[i] = searches[i].getSearchName();
         }
+        generateArray(20);
+        display = new Display();
+        userInterface = new UserInterface(display, array, this);
+
+        ArrayList<Element> sorted_array = Control.getQuickSort().sort(array, userInterface.getPointer1(), userInterface.getPointer2());
+        System.out.println(search(7));
     }
-    public ArrayList<Element> sort(ArrayList<Element> array) throws InterruptedException {
+
+    public void generateArray(int len) {
+        array = new ArrayList<>();
+        for (int i = 0; i < len; i++) {
+            array.add(new Element(random.nextInt(30) + 1, i));
+        }
+        // sorted = false;
+    }
+
+    public ArrayList<Element> sort() throws InterruptedException {
         ArrayList<Element> sorted_array;
-        sorted_array = Settings.getSort().sort(array, pointer);
+        userInterface.setAllElementsEnabled(false);
+        sorted_array = Settings.getSort().sort(array, userInterface.getPointer1(), userInterface.getPointer2());
+        userInterface.setAllElementsEnabled(true);
         return sorted_array;
     }
 
-    public int search(ArrayList<Element> array, int searchItem) throws InterruptedException {
+    public int search(int searchItem) throws InterruptedException {
         int index;
         if (Settings.getSearch() instanceof BinarySearch) {
             //check that array is presorted
         }
-        index = Settings.getSearch().search(array, pointer, searchItem);
+        userInterface.setAllElementsEnabled(false);
+        index = Settings.getSearch().search(array, userInterface.getPointer1(), searchItem);
+        userInterface.setAllElementsEnabled(true);
         return index;
     }
 

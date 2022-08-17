@@ -41,13 +41,18 @@ public class Switch extends Component {
     }
 
     public void render(Graphics g) {
-        g.setColor(Color.black);
-        g.drawString(option1, bounds.x - 30, bounds.y + 21);
-        g.drawString(option2, bounds.x + 67, bounds.y + 21);
-        g.setColor(Color.lightGray);
-        g.fillRect(bounds.x, bounds.y + 3, 60, 30);
-        g.setColor(Color.darkGray);
-        if (option1Selected) {g.fillRect(bounds.x, bounds.y, 30, 36);}
-        else {g.fillRect(bounds.x + 30, bounds.y, 30, 36);}
+        if (isEnabled()) {
+            g.setColor(Color.black);
+            g.drawString(option1, bounds.x - 30, bounds.y + 21);
+            g.drawString(option2, bounds.x + 67, bounds.y + 21);
+            g.setColor(Color.lightGray);
+            g.fillRect(bounds.x, bounds.y + 3, 60, 30);
+            g.setColor(Color.darkGray);
+            if (option1Selected) {
+                g.fillRect(bounds.x, bounds.y, 30, 36);
+            } else {
+                g.fillRect(bounds.x + 30, bounds.y, 30, 36);
+            }
+        }
     }
 }

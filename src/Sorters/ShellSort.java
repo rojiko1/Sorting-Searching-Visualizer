@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class ShellSort extends Sort {
 
-    public ArrayList<Element> sort(ArrayList<Element> array, Pointer pointer) throws InterruptedException {
+    public ArrayList<Element> sort(ArrayList<Element> array, Pointer pointer1, Pointer pointer2) throws InterruptedException {
         int blockSize = ((array.size() / 9) * 3) + 1;
         for (int j = blockSize; j > 0; j -= 3) {
             // performing insertion sort w/ greater shifts of elements (shift size decreases on 3x + 1)

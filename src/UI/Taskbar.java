@@ -65,6 +65,13 @@ public class Taskbar extends JPanel {
         this.add(searchChoices);
     }
 
+    @Override
+    public void setEnabled(boolean choice) {
+        mode.setEnabled(choice);
+        sortChoices.setEnabled(choice);
+        searchChoices.setEnabled(choice);
+    }
+
     public void render(Graphics g) {
         g.setColor(Color.white);
         g.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);

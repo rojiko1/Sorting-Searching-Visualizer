@@ -11,11 +11,11 @@ import java.util.ArrayList;
 
 public class BubbleSort extends Sort {
 
-    public ArrayList<Element> sort(ArrayList<Element> array, Pointer pointer) throws InterruptedException {
+    public ArrayList<Element> sort(ArrayList<Element> array, Pointer pointer1, Pointer pointer2) throws InterruptedException {
         for (int i = array.size(); i > 0; i--) {
-            pointer.setCurrentIndex(0);
+            pointer1.setCurrentIndex(0);
             for (int j = 0; j < (i - 1); j++) {
-                pointer.incrementCurrentIndex();
+                pointer1.incrementCurrentIndex();
                 if (array.get(j).getValue() > array.get(j + 1).getValue()) {
                     swap(array, j, j + 1);
                     Thread.sleep(Settings.getSortTime());

@@ -11,13 +11,13 @@ import java.util.ArrayList;
 
 public class MergeSort extends Sort {
 
-    public ArrayList<Element> sort(ArrayList<Element> array, Pointer pointer) throws InterruptedException {
+    public ArrayList<Element> sort(ArrayList<Element> array, Pointer pointer1, Pointer pointer2) throws InterruptedException {
         if (array.size() > 1) {
             ArrayList<Element> left_half = new ArrayList<>(array.subList(0, array.size() / 2));
             ArrayList<Element> right_half = new ArrayList<>(array.subList(array.size() / 2, array.size()));
 
-            ArrayList<Element> sorted_left_half = sort(left_half, pointer);
-            ArrayList<Element> sorted_right_half = sort(right_half, pointer);
+            ArrayList<Element> sorted_left_half = sort(left_half, pointer1, pointer2);
+            ArrayList<Element> sorted_right_half = sort(right_half, pointer1, pointer2);
 
             array = merge(sorted_left_half, sorted_right_half);
             updateIndices(array);
