@@ -6,12 +6,13 @@ import Main.Settings;
 
 import java.util.ArrayList;
 
-// time complexity: best: O(n^2); average: O(n^2); worst: O(n^2) COME BACK TO THIS; PROBABLY INCORRECT
+// time complexity: best: O(n^2); average: O(n^2); worst: O(n^2)
+// space complexity: O(1)
 // bubble sort: inefficient sorting algorithm; highly unscalable
 
 public class BubbleSort extends Sort {
 
-    public ArrayList<Element> sort(ArrayList<Element> array, Pointer pointer1, Pointer pointer2) throws InterruptedException {
+    public void sort(ArrayList<Element> array, Pointer pointer1, Pointer pointer2) throws InterruptedException {
         for (int i = array.size(); i > 0; i--) {
             pointer1.setCurrentIndex(0);
             for (int j = 0; j < (i - 1); j++) {
@@ -22,7 +23,6 @@ public class BubbleSort extends Sort {
                 }
             }
         }
-        return array;
     }
 
     public ArrayList<Element> recursiveSort(ArrayList<Element> array, int currentDepth) {

@@ -20,7 +20,7 @@ public class RadioButtonSet extends JPanel {
 
         this.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mousePressed(MouseEvent e) {
                 System.out.println("radio button set clicked");
             }
         });
@@ -32,7 +32,7 @@ public class RadioButtonSet extends JPanel {
             int finalI = i;
             set[i].addMouseListener(new MouseAdapter() {
                 @Override
-                public void mouseClicked(MouseEvent e) {
+                public void mousePressed(MouseEvent e) {
                     if (set[finalI].isEnabled()) {
                         setSelected(finalI);
                         action.act();

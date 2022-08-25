@@ -1,7 +1,8 @@
 package Sorters;
 
 // time complexity: best: O(n^2); average: O(n^2); worst: O(n^2)
-// sort name: inefficient sorting algorithm; highly unscalable
+// space complexity: O(1)
+// selection sort: inefficient sorting algorithm; highly unscalable
 
 import ArrayFunctions.Pointer;
 import ArrayFunctions.Element;
@@ -11,26 +12,27 @@ import java.util.ArrayList;
 
 public class SelectionSort extends Sort {
 
-    public ArrayList<Element> sort(ArrayList<Element> array, Pointer pointer1, Pointer pointer2) throws InterruptedException {
+    public void sort(ArrayList<Element> array, Pointer pointer1, Pointer pointer2) throws InterruptedException {
+        pointer1.setCurrentIndex(-1);
+        pointer2.setVisible(true);
         for (int i = 0; i < array.size() - 1; i++) {
+            pointer1.incrementCurrentIndex();
             // select smallest element in unsorted part of array
             int minVal = array.get(i).getValue();
             int minIndex = i;
             for (int j = i + 1; j < array.size(); j++) {
-                pointer1.setCurrentIndex(j);
+                pointer2.setCurrentIndex(j);
                 Thread.sleep(Settings.getSortTime());
                 if (array.get(j).getValue() < minVal) {
                     minVal = array.get(j).getValue();
                     minIndex = j;
                 }
             }
-            pointer1.setCurrentIndex(minIndex);
-            Thread.sleep(Settings.getSortTime());
-            pointer1.setCurrentIndex(i);
+            pointer2.setCurrentIndex(minIndex);
             Thread.sleep(Settings.getSortTime());
             swap(array, i, minIndex);
         }
-        return array;
+        pointer2.setVisible(false);
     }
 
     public String getSortName() {

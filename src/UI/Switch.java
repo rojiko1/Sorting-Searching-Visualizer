@@ -21,7 +21,7 @@ public class Switch extends Component {
 
         this.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mousePressed(MouseEvent e) {
                 if (isEnabled()) {
                     if (e.getX() < (getBounds().width / 2)) {
                         setOption1Selected(true);

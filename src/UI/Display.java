@@ -30,14 +30,8 @@ public class Display {
 
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 
-        panel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                System.out.println("screen clicked");
-                System.out.println(e.getX());
-                System.out.println(e.getY());
-            }
-        });
+        frame.addMouseListener(new MouseAdapter() {});
+        panel.addMouseListener(new MouseAdapter() {});
 
         frame.add(panel);
 

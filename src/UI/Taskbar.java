@@ -23,7 +23,7 @@ public class Taskbar extends JPanel {
 
         this.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mousePressed(MouseEvent e) {
                 System.out.println("taskbar clicked");
             }
         });

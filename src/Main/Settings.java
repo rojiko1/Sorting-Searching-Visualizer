@@ -8,10 +8,8 @@ public class Settings {
 
     private static boolean slowSpeed = true;
     private static boolean sortMode = true;
-    private static Sort sort = Control.getSelectionSort();
-    private static Search search = Control.getSequentialSearch();
-
-    public static boolean isSlowSpeed() {return slowSpeed;}
+    private static Sort sort = Control.getDefaultSort();
+    private static Search search = Control.getDefaultSearch();
 
     public static boolean isSortMode() {return sortMode;}
 
@@ -20,13 +18,13 @@ public class Settings {
     public static Search getSearch() {return search;}
 
     public static int getSortTime() {
-        if (slowSpeed) {return 300;}
-        else {return 100;}
+        if (slowSpeed) {return 150;}
+        else {return 50;}
     }
 
     public static int getSearchTime() {
-        if (slowSpeed) {return 700;}
-        else {return 300;}
+        if (slowSpeed) {return 350;}
+        else {return 150;}
     }
 
     public static void setSpeed(boolean choice) {slowSpeed = choice;}

@@ -14,10 +14,6 @@ public class Pointer {
 
     public int getCurrentIndex() {return currentIndex;}
 
-    public boolean isVisible() {
-        return visible;
-    }
-
     public void setCurrentIndex(int index) {currentIndex = index;}
 
     public void setVisible(boolean isVisible) {visible = isVisible;}
@@ -29,7 +25,7 @@ public class Pointer {
     public void render(Graphics g) {
         if (visible) {
             g.setColor(Color.red);
-            g.fillRect(14 + (26 * getCurrentIndex()), 60, 4, 500);
+            g.fillRect(17 + (13 * getCurrentIndex()), 60, 2, 500);
         }
     }
 

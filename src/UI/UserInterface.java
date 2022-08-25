@@ -8,31 +8,34 @@ import Main.Settings;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 public class UserInterface implements Runnable {
 
-    private static final int FPS = 10;
+    private static final int FPS = 5;
     private final Display display;
     private Graphics g;
-    private ArrayList<Element> array;
+    private final Control control;
     private final Pointer pointer1;
     private final Pointer pointer2;
     private final Taskbar taskbar;
     private final Button startButton;
+    private final Button generateArrayButton;
+    private final Button shuffleArrayButton;
 
-    public UserInterface(Display display, ArrayList<Element> array, Control control) {
+    public UserInterface(Display display, Control control) {
         this.display = display;
-        this.array = array;
+        this.control = control;
         pointer1 = new Pointer(0);
         pointer2 = new Pointer(0);
         pointer2.setVisible(false);
+
         this.taskbar = new Taskbar(display.getPanel().getWidth());
         display.getPanel().add(this.taskbar);
-        startButton = new Button("Start", Color.orange, 900, 200);
+
+        startButton = new Button("Start", Color.orange, 1070, 80, 35);
         startButton.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
+            public void mousePressed(MouseEvent e) {
                 if (startButton.isEnabled()) {
                     if (Settings.isSortMode()) {
                         try {
@@ -54,6 +57,28 @@ public class UserInterface implements Runnable {
         });
         display.getPanel().add(startButton);
 
+        generateArrayButton = new Button("Generate Array", Color.orange, 1070, 140, 10);
+        generateArrayButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (generateArrayButton.isEnabled()) {
+                    control.generateArray(Control.array_size);
+                }
+            }
+        });
+        display.getPanel().add(generateArrayButton);
+
+        shuffleArrayButton = new Button("Shuffle Array", Color.orange, 1070, 200, 10);
+        shuffleArrayButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (shuffleArrayButton.isEnabled()) {
+                    control.shuffleArray();
+                }
+            }
+        });
+        display.getPanel().add(shuffleArrayButton);
+
         Thread thread = new Thread(this);
         thread.start();
     }
@@ -61,12 +86,12 @@ public class UserInterface implements Runnable {
     @Override
     public void run() {
         while (display.running()) {
-            render();
             try {
                 Thread.sleep((long) 1000 / FPS);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+            render();
         }
     }
 
@@ -81,6 +106,8 @@ public class UserInterface implements Runnable {
     public void setAllElementsEnabled(boolean choice) {
         taskbar.setEnabled(choice);
         startButton.setEnabled(choice);
+        generateArrayButton.setEnabled(choice);
+        shuffleArrayButton.setEnabled(choice);
     }
 
     private void render() {
@@ -93,20 +120,16 @@ public class UserInterface implements Runnable {
         pointer2.render(g);
         taskbar.render(g);
         startButton.render(g);
-
-        g.setColor(Color.black);
-        g.drawString("Sort mode: " + Settings.isSortMode(), 800, 200);
-        g.drawString("Slow mode: " + Settings.isSlowSpeed(), 800, 250);
-        g.drawString("Sort Choice: " + Settings.getSort(), 800, 300);
-        g.drawString("Search Choice: " + Settings.getSearch(), 800, 350);
+        generateArrayButton.render(g);
+        shuffleArrayButton.render(g);
     }
 
     private void drawRectangles() {
         g.setColor(Color.blue);
-        for (Element element : array) {
-            int width = 18;
-            int height = 15 * element.getValue();
-            int x = 20 + (26 * element.getIndex());
+        for (Element element : control.getArray()) {
+            int width = 9;
+            int height = 5 * element.getValue();
+            int x = 20 + (13 * element.getIndex());
             int y = display.getPanel().getHeight() - height - 10;
             g.fillRect(x, y, width, height);
         }

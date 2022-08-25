@@ -31,10 +31,14 @@ public class Control {
 
     private final Random random = new Random();
     private ArrayList<Element> array;
-    private Display display;
-    private UserInterface userInterface;
+    public static final int array_size = 80;
+    private final UserInterface userInterface;
+    private final Shuffler shuffler = new Shuffler();
+    private final Sorter sorter;
+    private final Searcher searcher;
 
     public Control() throws InterruptedException {
+        generateArray(array_size);
         sortNames = new String[sorts.length];
         for (int i = 0; i < sorts.length; i++) {
             sortNames[i] = sorts[i].getSortName();
@@ -43,78 +47,45 @@ public class Control {
         for (int i = 0; i < searches.length; i++) {
             searchNames[i] = searches[i].getSearchName();
         }
-        generateArray(20);
-        display = new Display();
-        userInterface = new UserInterface(display, array, this);
-
-        ArrayList<Element> sorted_array = Control.getQuickSort().sort(array, userInterface.getPointer1(), userInterface.getPointer2());
-        System.out.println(search(7));
+        userInterface = new UserInterface(new Display(), this);
+        sorter = new Sorter(this, userInterface);
+        searcher = new Searcher(this, userInterface);
+        Settings.setSort(radixSort);
+        sort();
     }
 
     public void generateArray(int len) {
         array = new ArrayList<>();
         for (int i = 0; i < len; i++) {
-            array.add(new Element(random.nextInt(30) + 1, i));
+            array.add(new Element(random.nextInt(99) + 1, i));
         }
         // sorted = false;
     }
 
-    public ArrayList<Element> sort() throws InterruptedException {
-        ArrayList<Element> sorted_array;
-        userInterface.setAllElementsEnabled(false);
-        sorted_array = Settings.getSort().sort(array, userInterface.getPointer1(), userInterface.getPointer2());
-        userInterface.setAllElementsEnabled(true);
-        return sorted_array;
+    public void shuffleArray() {
+        shuffler.shuffle(array);
     }
 
-    public int search(int searchItem) throws InterruptedException {
-        int index;
-        if (Settings.getSearch() instanceof BinarySearch) {
-            //check that array is presorted
-        }
-        userInterface.setAllElementsEnabled(false);
-        index = Settings.getSearch().search(array, userInterface.getPointer1(), searchItem);
-        userInterface.setAllElementsEnabled(true);
-        return index;
+    public void sort() throws InterruptedException {
+        Thread thread = new Thread(sorter);
+        thread.start();
     }
 
-    public static BubbleSort getBubbleSort() {
-        return bubbleSort;
+    public void search(int searchItem) throws InterruptedException {
+        searcher.setSearchItem(searchItem);
+        Thread thread = new Thread(searcher);
+        thread.start();
     }
 
-    public static HeapSort getHeapSort() {
-        return heapSort;
+    public ArrayList<Element> getArray() {
+        return array;
     }
 
-    public static InsertionSort getInsertionSort() {
-        return insertionSort;
-    }
-
-    public static MergeSort getMergeSort() {
-        return mergeSort;
-    }
-
-    public static QuickSort getQuickSort() {
-        return quickSort;
-    }
-
-    public static RadixSort getRadixSort() {
-        return radixSort;
-    }
-
-    public static SelectionSort getSelectionSort() {
+    public static Sort getDefaultSort() {
         return selectionSort;
     }
 
-    public static ShellSort getShellSort() {
-        return shellSort;
-    }
-
-    public static BinarySearch getBinarySearch() {
-        return binarySearch;
-    }
-
-    public static SequentialSearch getSequentialSearch() {
+    public static Search getDefaultSearch() {
         return sequentialSearch;
     }
 

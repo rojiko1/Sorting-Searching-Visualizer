@@ -1,6 +1,7 @@
 package Sorters;
 
 // time complexity: best: ; average: ; worst:
+// space complexity:
 // sort name: commentary on efficiency
 
 import ArrayFunctions.Pointer;
@@ -12,7 +13,7 @@ public abstract class Sort {
 
     protected static final Swapper swapper = new Swapper();
 
-    public abstract ArrayList<Element> sort(ArrayList<Element> array, Pointer pointer1, Pointer pointer2) throws InterruptedException;
+    public abstract void sort(ArrayList<Element> array, Pointer pointer1, Pointer pointer2) throws InterruptedException;
 
     public abstract String getSortName();
 

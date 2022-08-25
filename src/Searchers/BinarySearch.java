@@ -12,26 +12,22 @@ import java.util.ArrayList;
 public class BinarySearch extends Search {
 
     public int search(ArrayList<Element> array, Pointer pointer, int searchItem) throws InterruptedException {
-        if (array.size() > 0) {
-            int middle_index = array.size() / 2;
-            int returned_index;
+        return searchSection(array, 0, array.size() - 1, pointer, searchItem);
+    }
+
+    private int searchSection(ArrayList<Element> array, int first, int last, Pointer pointer, int searchItem) throws InterruptedException {
+        if (first <= last) {
+            int middle_index = (first + last) / 2;
+            pointer.setCurrentIndex(middle_index);
             Thread.sleep(Settings.getSearchTime());
             if (array.get(middle_index).getValue() == searchItem) {
                 return middle_index;
             }
             else if (array.get(middle_index).getValue() < searchItem) {
-                if (middle_index + 1 != array.size()) {
-                    returned_index = search(new ArrayList<>(array.subList(middle_index + 1, array.size())), pointer, searchItem);
-                    if (returned_index != -1) {
-                        return middle_index + returned_index + 1;
-                    }
-                    else {return -1;}
-                }
-                else {return -1;}
+                return searchSection(array, middle_index + 1, last, pointer, searchItem);
             }
             else {
-                returned_index = search(new ArrayList<>(array.subList(0, middle_index)), pointer, searchItem);
-                return returned_index;
+                return searchSection(array, first, middle_index - 1, pointer, searchItem);
             }
         }
         else {return -1;}
